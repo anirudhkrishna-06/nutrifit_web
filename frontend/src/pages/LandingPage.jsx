@@ -21,31 +21,8 @@ const LandingPage = () => {
 
   const styles = {
     // Global styles
-    global: {
-      body: {
-        margin: 0,
-        padding: 0,
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif",
-        backgroundColor: '#0a0a0a',
-        color: '#ffffff',
-        overflowX: 'hidden',
-      },
-      '@keyframes float': {
-        '0%, 100%': { transform: 'translateY(0px)' },
-        '50%': { transform: 'translateY(-20px)' },
-      },
-      '@keyframes fadeIn': {
-        '0%': { opacity: 0, transform: 'translateY(20px)' },
-        '100%': { opacity: 1, transform: 'translateY(0)' },
-      },
-      '@keyframes pulse': {
-        '0%, 100%': { opacity: 1 },
-        '50%': { opacity: 0.7 },
-      },
-      
-    },
 
-    
+
     // Hero Section
     hero: {
       position: 'relative',
@@ -161,18 +138,7 @@ const LandingPage = () => {
       left: 0,
       pointerEvents: 'none',
     },
-    floatingElement: (top, left, size, delay) => ({
-      position: 'absolute',
-      top: `${top}%`,
-      left: `${left}%`,
-      width: `${size}px`,
-      height: `${size}px`,
-      background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0) 70%)',
-      borderRadius: '50%',
-      animation: `float 6s ease-in-out infinite`,
-      animationDelay: `${delay}s`,
-      filter: 'blur(20px)',
-    }),
+    /* floatingElement removed from here and moved to a standalone function */
 
     // Problem Section
     problemSection: {
@@ -228,53 +194,6 @@ const LandingPage = () => {
       lineHeight: 1.6,
     },
 
-    // Timeline Section
-    timelineSection: {
-      padding: '120px 20px',
-      background: 'linear-gradient(180deg, #111827 0%, #1e293b 100%)',
-    },
-    timeline: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '60px',
-      maxWidth: '1200px',
-      margin: '0 auto',
-      flexWrap: 'wrap',
-    },
-    timelineNode: (index) => ({
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '20px',
-      flex: 1,
-      minWidth: '200px',
-      opacity: 0,
-      animation: `fadeIn 0.6s ease-out ${index * 0.2}s both`,
-    }),
-    nodeCircle: {
-      width: '80px',
-      height: '80px',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      borderRadius: '50%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: '32px',
-      fontWeight: 'bold',
-      boxShadow: '0 10px 30px rgba(102, 126, 234, 0.3)',
-    },
-    nodeLabel: {
-      fontSize: '20px',
-      fontWeight: '600',
-      textAlign: 'center',
-      color: '#ffffff',
-    },
-    timelineArrow: {
-      fontSize: '32px',
-      color: '#a78bfa',
-      opacity: 0.5,
-    },
 
     // Features Section
     featuresSection: {
@@ -371,235 +290,8 @@ const LandingPage = () => {
       color: '#64748b',
       fontSize: '14px',
     },
-     timelineSection: {
-    padding: '140px 20px',
-    background: 'linear-gradient(180deg, #111827 0%, #1a1f2e 100%)',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  timelineContainer: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    position: 'relative',
-    zIndex: 2,
-  },
-  timelineTitle: {
-    fontSize: 'clamp(36px, 4vw, 60px)',
-    fontWeight: '800',
-    textAlign: 'center',
-    marginBottom: '16px',
-    background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    letterSpacing: '-1px',
-  },
-  timelineSubtitle: {
-    fontSize: 'clamp(16px, 2vw, 20px)',
-    color: '#94a3b8',
-    textAlign: 'center',
-    marginBottom: '80px',
-    fontWeight: '400',
-    letterSpacing: '0.5px',
-  },
-  timelineWrapper: {
-    position: 'relative',
-    padding: '60px 0',
-  },
-  timelineTrack: {
-    position: 'relative',
-    minHeight: '400px',
-  },
-  timelineLine: {
-    position: 'absolute',
-    top: '50%',
-    left: '0',
-    right: '0',
-    height: '2px',
-    background: 'linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.6), transparent)',
-    transform: 'translateY(-50%)',
-    zIndex: 1,
-    '::before': {
-      content: '""',
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
-      filter: 'blur(8px)',
-    }
-  },
-  timelineNodes: {
-    position: 'relative',
-    zIndex: 2,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  timelineItem: (index) => ({
-    position: 'relative',
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    opacity: 0,
-    animation: `fadeInUp 0.8s ease-out ${index * 0.2}s forwards`,
-  }),
-  connectionLine: (index) => ({
-    position: 'absolute',
-    top: '50%',
-    left: '-50%',
-    width: '100%',
-    height: '1px',
-    background: `linear-gradient(90deg, rgba(${index === 1 ? '16, 185, 129' : index === 2 ? '245, 158, 11' : '139, 92, 246'}, 0.3), rgba(${index === 1 ? '16, 185, 129' : index === 2 ? '245, 158, 11' : '139, 92, 246'}, 0))`,
-    transform: 'translateY(-50%)',
-    zIndex: 1,
-  }),
-  nodeContainer: {
-    position: 'relative',
-    marginBottom: '40px',
-  },
-  node: {
-    width: '80px',
-    height: '80px',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    zIndex: 3,
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-    cursor: 'pointer',
-  },
-  nodeGlow: {
-    position: 'absolute',
-    top: '-10px',
-    left: '-10px',
-    right: '-10px',
-    bottom: '-10px',
-    background: 'inherit',
-    borderRadius: '50%',
-    filter: 'blur(20px)',
-    opacity: 0.5,
-    zIndex: 1,
-  },
-  nodeStep: {
-    fontSize: '20px',
-    fontWeight: '700',
-    color: '#ffffff',
-    position: 'relative',
-    zIndex: 4,
-  },
-  nodePulse: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    border: '2px solid',
-    borderRadius: '50%',
-    animation: 'pulseRing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-    opacity: 0.7,
-  },
-  contentContainer: {
-    textAlign: 'center',
-    maxWidth: '250px',
-  },
-  stepIndicator: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: '16px',
-    gap: '12px',
-  },
-  stepLine: {
-    width: '40px',
-    height: '2px',
-    borderRadius: '1px',
-  },
-  itemTitle: {
-    fontSize: '22px',
-    fontWeight: '700',
-    color: '#ffffff',
-    marginBottom: '12px',
-    letterSpacing: '-0.5px',
-  },
-  itemDesc: {
-    fontSize: '15px',
-    color: '#94a3b8',
-    lineHeight: 1.6,
-    fontWeight: '400',
-  },
-  timelineQuote: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '40px',
-    marginTop: '100px',
-    padding: '40px',
-    position: 'relative',
-  },
-  quoteLine: {
-    flex: 1,
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
-  },
-  quoteContent: {
-    textAlign: 'center',
-    minWidth: '300px',
-  },
-  quoteText: {
-    fontSize: 'clamp(20px, 2.5vw, 28px)',
-    fontStyle: 'italic',
-    color: '#ffffff',
-    fontWeight: '300',
-    lineHeight: 1.4,
-    marginBottom: '20px',
-    letterSpacing: '0.5px',
-  },
-  highlight: {
-    fontWeight: '700',
-    background: 'linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    fontStyle: 'normal',
-  },
-  quoteAuthor: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '12px',
-  },
-  authorLine: {
-    width: '20px',
-    height: '1px',
-    background: 'rgba(255, 255, 255, 0.3)',
-  },
-  legend: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '40px',
-    marginTop: '60px',
-    flexWrap: 'wrap',
-  },
-  legendItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  legendDot: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '50%',
-  },
-  legendText: {
-    fontSize: '14px',
-    color: '#94a3b8',
-    fontWeight: '500',
-    letterSpacing: '0.5px',
-  },
 
-    
+
   };
 
   const handlePrimaryClick = () => {
@@ -611,7 +303,12 @@ const LandingPage = () => {
   };
 
   return (
-    <div style={styles.global.body}>
+    <div style={{
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff',
+      minHeight: '100vh',
+      overflowX: 'hidden'
+    }}>
       {/* Hero Section */}
       <section style={styles.hero}>
         {/* Video Background */}
@@ -632,10 +329,10 @@ const LandingPage = () => {
 
         {/* Floating Elements */}
         <div style={styles.floatingElements}>
-          <div style={styles.floatingElement(20, 10, 200, 0)} />
-          <div style={styles.floatingElement(70, 80, 150, 2)} />
-          <div style={styles.floatingElement(30, 85, 100, 4)} />
-          <div style={styles.floatingElement(80, 20, 180, 1)} />
+          <div style={getFloatingElementStyle(20, 10, 200, 0)} />
+          <div style={getFloatingElementStyle(70, 80, 150, 2)} />
+          <div style={getFloatingElementStyle(30, 85, 100, 4)} />
+          <div style={getFloatingElementStyle(80, 20, 180, 1)} />
         </div>
 
         {/* Logo */}
@@ -646,9 +343,9 @@ const LandingPage = () => {
           <h1 style={styles.headline}>
             Understand what food does to you,<br />before it happens.
           </h1>
-          
+
           <div style={styles.ctaContainer}>
-            <button 
+            <button
               style={styles.primaryButton}
               onClick={handlePrimaryClick}
               onMouseEnter={(e) => {
@@ -662,7 +359,7 @@ const LandingPage = () => {
             >
               Start Now
             </button>
-            <button 
+            <button
               style={styles.secondaryButton}
               onClick={handleSecondaryClick}
               onMouseEnter={(e) => {
@@ -739,7 +436,7 @@ const LandingPage = () => {
               text: 'Red numbers and warnings promote shame and anxiety rather than genuine understanding and growth.',
             },
           ].map((problem, index) => (
-            <div 
+            <div
               key={index}
               style={styles.problemCard}
               onMouseEnter={(e) => {
@@ -761,7 +458,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      
+
       {/* Final CTA */}
       <section style={{
         padding: '120px 20px',
@@ -785,7 +482,7 @@ const LandingPage = () => {
         }}>
           Join thousands who've transformed their relationship with food.
         </p>
-        <button 
+        <button
           style={{
             ...styles.primaryButton,
             background: '#ffffff',
@@ -820,7 +517,7 @@ const LandingPage = () => {
             }}>
               NutriFit
             </div>
-            
+
           </div>
           <div style={styles.footerLinks}>
             <a href="#" style={styles.footerLink}>Privacy</a>
@@ -828,7 +525,7 @@ const LandingPage = () => {
             <a href="#" style={styles.footerLink}>Contact</a>
             <a href="#" style={styles.footerLink}>Research</a>
           </div>
-          
+
         </div>
       </footer>
 
@@ -903,5 +600,18 @@ const LandingPage = () => {
     </div>
   );
 };
+
+const getFloatingElementStyle = (top, left, size, delay) => ({
+  position: 'absolute',
+  top: `${top}%`,
+  left: `${left}%`,
+  width: `${size}px`,
+  height: `${size}px`,
+  background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0) 70%)',
+  borderRadius: '50%',
+  animation: `float 6s ease-in-out infinite`,
+  animationDelay: `${delay}s`,
+  filter: 'blur(20px)',
+});
 
 export default LandingPage;
