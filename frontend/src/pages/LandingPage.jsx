@@ -11,6 +11,7 @@ const LandingPage = () => {
   const [problemSectionProgress, setProblemSectionProgress] = useState(0);
   const problemSectionRef = useRef(null);
   const problemCardRefs = useRef([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const problemCardsData = [
     {
@@ -90,6 +91,13 @@ const LandingPage = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
+
+    const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Calculate parallax effects
@@ -146,9 +154,9 @@ const LandingPage = () => {
     },
     logo: {
       position: 'absolute',
-      top: '40px',
-      left: '40px',
-      fontSize: '32px',
+      top: isMobile ? '20px' : '40px',
+      left: isMobile ? '20px' : '40px',
+      fontSize: isMobile ? '22px' : '32px',
       fontWeight: '800',
       background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 100%)',
       WebkitBackgroundClip: 'text',
@@ -157,7 +165,7 @@ const LandingPage = () => {
       zIndex: 10,
     },
     headline: {
-      fontSize: 'clamp(62px, 2vw, 90px)',
+      fontSize: isMobile ? '36px' : 'clamp(62px, 2vw, 90px)',
       fontWeight: '800',
       lineHeight: 1.1,
       marginBottom: '28px',
@@ -166,10 +174,12 @@ const LandingPage = () => {
       WebkitTextFillColor: 'transparent',
       animation: 'fadeIn 1s ease-out',
       letterSpacing: '-2px',
-      marginTop: '-80px',
+      marginTop: isMobile ? '-20px' : '-80px',
+      padding: isMobile ? '0 16px' : '0',
     },
     subtext: {
-      fontSize: 'clamp(18px, 2vw, 24px)',
+      fontSize: isMobile ? '14px' : 'clamp(18px, 2vw, 24px)',
+      padding: isMobile ? '0 10px' : '0',
       fontWeight: '400',
       color: '#d1d5db',
       maxWidth: '800px',
@@ -179,15 +189,18 @@ const LandingPage = () => {
     },
     ctaContainer: {
       display: 'flex',
-      gap: '20px',
+      gap: isMobile ? '12px' : '20px',
+      flexDirection: isMobile ? 'column' : 'row',
+      alignItems: 'center',
       justifyContent: 'center',
       flexWrap: 'wrap',
       animation: 'fadeIn 1s ease-out 0.6s both',
       marginTop: '20px',
     },
     primaryButton: {
-      padding: '0px 58px',
-      fontSize: '19px',
+      padding: isMobile ? '14px 28px' : '20px 58px',
+      fontSize: isMobile ? '16px' : '19px',
+      width: isMobile ? '80%' : 'auto',
       fontWeight: '500',
       background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 100%)',
       border: 'none',
@@ -200,7 +213,8 @@ const LandingPage = () => {
       overflow: 'hidden',
     },
     secondaryButton: {
-      padding: '20px 48px',
+      padding: isMobile ? '14px 28px' : '20px 48px',
+      width: isMobile ? '80%' : 'auto',
       fontSize: '16px',
       fontWeight: '400',
       background: 'rgba(255, 255, 255, 0.1)',
@@ -238,7 +252,9 @@ const LandingPage = () => {
     },
     problemCards: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+      gridTemplateColumns: isMobile
+        ? '1fr'
+        : 'repeat(auto-fit, minmax(380px, 1fr))',
       gap: '34px',
       maxWidth: '1480px',
       margin: '0 auto',
@@ -250,15 +266,15 @@ const LandingPage = () => {
       backdropFilter: 'blur(22px)',
       border: '1px solid rgba(255, 255, 255, 0.08)',
       borderRadius: '32px',
-      padding: '34px',
+      padding: isMobile ? '22px' : '34px',
+      minHeight: isMobile ? 'auto' : '430px',
       transition: 'transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease, background 0.45s ease',
       position: 'relative',
       overflow: 'hidden',
-      minHeight: '430px',
       boxShadow: '0 24px 60px rgba(0, 0, 0, 0.32)',
     },
     problemNumber: {
-      fontSize: '138px',
+      fontSize: isMobile ? '72px' : '138px',
       fontWeight: '800',
       color: 'rgba(255, 255, 255, 0.08)',
       position: 'absolute',
@@ -268,22 +284,22 @@ const LandingPage = () => {
       lineHeight: 1,
     },
     problemTitle: {
-      fontSize: '30px',
+      fontSize: isMobile ? '20px' : '30px',
+      maxWidth: isMobile ? '100%' : '280px',
       fontWeight: '700',
       marginBottom: '14px',
       color: '#ffffff',
       marginTop: '26px',
       position: 'relative',
       zIndex: 2,
-      maxWidth: '280px',
     },
     problemText: {
-      fontSize: '16px',
+      maxWidth: isMobile ? '100%' : '320px',
+      fontSize: isMobile ? '14px' : '16px',
       color: '#cbd5e1',
       lineHeight: 1.75,
       position: 'relative',
       zIndex: 2,
-      maxWidth: '320px',
     },
     problemCardGlow: {
       position: 'absolute',
@@ -344,7 +360,7 @@ const LandingPage = () => {
       position: 'relative',
       zIndex: 2,
       marginTop: '34px',
-      height: '136px',
+      height: isMobile ? '100px' : '136px',
       borderRadius: '26px',
       background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
       border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -498,9 +514,10 @@ const LandingPage = () => {
       margin: '0 auto',
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',
       flexWrap: 'wrap',
       gap: '40px',
+      flexDirection: isMobile ? 'column' : 'row',
+      alignItems: isMobile ? 'flex-start' : 'center',
     },
     footerLinks: {
       display: 'flex',
@@ -608,7 +625,7 @@ const LandingPage = () => {
         {/* Scroll Indicator */}
         <div style={{
           position: 'absolute',
-          bottom: '100px',
+          bottom: isMobile ? '40px' : '100px',
           left: '50%',
           transform: 'translateX(-50%)',
           color: '#94a3b8',
@@ -736,7 +753,8 @@ const LandingPage = () => {
         textAlign: 'center',
       }}>
         <h2 style={{
-          fontSize: 'clamp(36px, 4vw, 60px)',
+          fontSize: isMobile ? '28px' : 'clamp(36px, 4vw, 60px)',
+          padding: isMobile ? '0 16px' : '0',
           fontWeight: '800',
           marginBottom: '24px',
           color: '#ffffff',
@@ -744,7 +762,8 @@ const LandingPage = () => {
           Ready to experience food differently?
         </h2>
         <p style={{
-          fontSize: '20px',
+          fontSize: isMobile ? '14px' : '20px',
+          padding: isMobile ? '0 12px' : '0',
           color: 'rgba(255, 255, 255, 0.9)',
           maxWidth: '600px',
           margin: '0 auto 48px',
@@ -758,7 +777,8 @@ const LandingPage = () => {
             background: '#ffffff',
             color: '#667eea',
             fontSize: '20px',
-            padding: '24px 60px',
+            padding: isMobile ? '16px 28px' : '24px 60px',
+            width: isMobile ? '80%' : 'auto',
           }}
           onClick={handlePrimaryClick}
           onMouseEnter={(e) => {

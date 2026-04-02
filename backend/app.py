@@ -61,8 +61,6 @@ init_db()
 
 
 
-
-
 @app.route("/api/health", methods=["GET"])
 def health():
     return jsonify(
