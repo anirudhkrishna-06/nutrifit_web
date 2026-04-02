@@ -156,7 +156,7 @@ const LandingPage = () => {
       position: 'absolute',
       top: isMobile ? '20px' : '40px',
       left: isMobile ? '20px' : '40px',
-      fontSize: isMobile ? '22px' : '32px',
+      fontSize: isMobile ? '28px' : '32px',
       fontWeight: '800',
       background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 100%)',
       WebkitBackgroundClip: 'text',
@@ -168,13 +168,13 @@ const LandingPage = () => {
       fontSize: isMobile ? '36px' : 'clamp(62px, 2vw, 90px)',
       fontWeight: '800',
       lineHeight: 1.1,
-      marginBottom: '28px',
+      marginBottom: isMobile ? '80px' : '28px',
       background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #38bdf8 100%)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       animation: 'fadeIn 1s ease-out',
       letterSpacing: '-2px',
-      marginTop: isMobile ? '-20px' : '-80px',
+      marginTop: isMobile ? '-150px' : '-80px',
       padding: isMobile ? '0 16px' : '0',
     },
     subtext: {
@@ -200,7 +200,7 @@ const LandingPage = () => {
     primaryButton: {
       padding: isMobile ? '14px 28px' : '20px 58px',
       fontSize: isMobile ? '16px' : '19px',
-      width: isMobile ? '80%' : 'auto',
+      width: isMobile ? '50%' : 'auto',
       fontWeight: '500',
       background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 100%)',
       border: 'none',
@@ -213,9 +213,9 @@ const LandingPage = () => {
       overflow: 'hidden',
     },
     secondaryButton: {
-      padding: isMobile ? '14px 28px' : '20px 48px',
-      width: isMobile ? '80%' : 'auto',
-      fontSize: '16px',
+      padding: isMobile ? '14px 8px' : '20px 48px',
+      width: isMobile ? '30%' : 'auto',
+      fontSize: isMobile ? '8px' : '16px',
       fontWeight: '400',
       background: 'rgba(255, 255, 255, 0.1)',
       backdropFilter: 'blur(10px)',
@@ -227,7 +227,7 @@ const LandingPage = () => {
     },
     floatingElements: {
       position: 'absolute',
-      width: '100%',
+      width: '80%',
       height: '100%',
       top: 0,
       left: 0,
@@ -513,11 +513,12 @@ const LandingPage = () => {
       maxWidth: '1200px',
       margin: '0 auto',
       display: 'flex',
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
-      gap: '40px',
+      justifyContent: isMobile ? 'center' : 'space-between',
+      alignItems: 'center',
       flexDirection: isMobile ? 'column' : 'row',
-      alignItems: isMobile ? 'flex-start' : 'center',
+      gap: isMobile ? '20px' : '40px',
+      textAlign: isMobile ? 'center' : 'left',
+      flexWrap: 'wrap',
     },
     footerLinks: {
       display: 'flex',
@@ -526,7 +527,7 @@ const LandingPage = () => {
     },
     footerLink: {
       color: '#94a3b8',
-      fontSize: '14px',
+      fontSize: isMobile ? '10px' : '14px',
       textDecoration: 'none',
       transition: 'color 0.3s ease',
     },
@@ -749,7 +750,7 @@ const LandingPage = () => {
       {/* Final CTA */}
       <section style={{
         padding: '120px 20px',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 70%)',
         textAlign: 'center',
       }}>
         <h2 style={{
@@ -775,10 +776,10 @@ const LandingPage = () => {
           style={{
             ...styles.primaryButton,
             background: '#ffffff',
-            color: '#667eea',
-            fontSize: '20px',
+            color: '#04050c',
+            fontSize: '13px',
             padding: isMobile ? '16px 28px' : '24px 60px',
-            width: isMobile ? '80%' : 'auto',
+            width: isMobile ? '50%' : 'auto',
           }}
           onClick={handlePrimaryClick}
           onMouseEnter={(e) => {
@@ -799,11 +800,12 @@ const LandingPage = () => {
         <div style={styles.footerContent}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{
-              fontSize: '24px',
+              fontSize: '35px',
               fontWeight: '800',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #fca90e 0%, #e7d507 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              marginTop: '-20px'
             }}>
               NutriFit
             </div>
