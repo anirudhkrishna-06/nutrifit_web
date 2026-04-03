@@ -16,8 +16,8 @@ const LandingPage = () => {
   const problemCardsData = [
     {
       number: '01',
-      title: 'They track numbers, not outcomes',
-      text: 'Endless calorie counting without showing how food actually affects your body\'s energy, mood, and performance.',
+      title: 'They track calories, not your health',
+      text: 'Most apps count numbers but ignore how food impacts blood sugar, metabolism, and long-term health—especially for diabetes management.',
       accent: 'linear-gradient(135deg, rgba(248, 113, 113, 0.95) 0%, rgba(251, 191, 36, 0.9) 100%)',
       chip: 'Past-only data',
       stat: 'Energy drift',
@@ -27,8 +27,8 @@ const LandingPage = () => {
     },
     {
       number: '02',
-      title: 'They show the past, not the future',
-      text: 'Traditional tracking only tells you what you ate yesterday, not what it will do to you tomorrow.',
+      title: 'They don’t predict what comes next',
+      text: 'Existing solutions only log past meals, but never tell you how your current diet will affect your future glucose levels or health outcomes.',
       accent: 'linear-gradient(135deg, rgba(96, 165, 250, 0.95) 0%, rgba(45, 212, 191, 0.9) 100%)',
       chip: 'No prediction',
       stat: 'Tomorrow signal',
@@ -586,7 +586,7 @@ const LandingPage = () => {
         {/* Hero Content */}
         <div style={styles.heroContent}>
           <h1 style={styles.headline}>
-            Understand what food does to you,<br />before it happens.
+            Your food. Your activity.<br />Finally connected.
           </h1>
 
           <div style={styles.ctaContainer}>
@@ -761,7 +761,7 @@ const LandingPage = () => {
           color: '#ffffff',
           lineHeight: 1.2,
         }}>
-          Ready to experience food differently?
+          Ready to take control of your nutrition?
         </h2>
         <p style={{
           fontSize: isMobile ? '14px' : '20px',
@@ -771,14 +771,23 @@ const LandingPage = () => {
           margin: '0 auto 48px',
           lineHeight: 1.6,
         }}>
-          Join thousands who've transformed their relationship with food.
+          Start managing your diet with AI-driven insights, personalized planning, and real-time health data.
         </p>
+        <p style={{
+          fontSize: isMobile ? '14px' : '20px',
+          padding: isMobile ? '0 12px' : '0',
+          color: 'rgba(255, 255, 255, 0.9)',
+          maxWidth: '600px',
+          margin: '0 auto 48px',
+          lineHeight: 1.6,
+        }}>
+          Built for diabetes today — scalable for athletes, fitness enthusiasts, and personalized healthcare tomorrow.        </p>
         <button
           style={{
             ...styles.primaryButton,
             background: '#ffffff',
             color: '#04050c',
-            fontSize: '13px',
+            fontSize: isMobile ? '13px' : '16px',
             padding: isMobile ? '16px 28px' : '24px 60px',
             width: isMobile ? '50%' : 'auto',
           }}
